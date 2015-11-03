@@ -12,7 +12,7 @@
         var $msb_main = "<a class='msb_main'><img title='分享' src='images/share_core_square.jpg'></a>";
         var $social_group = "<div class='social_group'>"
 		+ "<a target='_blank' class='msb_network_button weixin'>weixin</a>"
-		+ "<a target='_blank' class='msb_network_button weibo'>weibo</a>"
+		+ "<a target='_blank' class='msb_network_button sina'>sina</a>"
 		+ "<a target='_blank' class='msb_network_button tQQ'>tQQ</a>"
 		+ "<a target='_blank' class='msb_network_button qZone'>qZone</a>"
 		+ "<a target='_blank' class='msb_network_button douban'>douban</a>"
@@ -29,6 +29,10 @@
 		//添加QQ空间分享事件
 		$(document).on("click",".msb_network_button.qZone",function(){
 			qZone(this,settings);
+		});
+		//添加新浪微博分享事件
+		$(document).on("click",".msb_network_button.sina",function(){
+			sinaWeibo(this,settings);
 		});
         $(document).on("click",".msb_main",function(){
 			 if ($(this).hasClass("disabled")) return;
@@ -104,6 +108,12 @@
 		window.open(replaceAPI(qzone,options));
 	}
 
+	function sinaWeibo(target,options){
+		var options = $.extend({}, $.fn.socialShare.defaults, options);
+
+		window.open(replaceAPI(sina,options));
+	}
+
     $.fn.socialShare = function(options, param) {
         if(typeof options == 'string'){
 		    var method = $.fn.socialShare.methods[options];
@@ -139,13 +149,18 @@
 			return jq.each(function(){
 				qZone(this,options);
 			})
+		},
+		sinaWeibo:function(jq,options) {
+			return jq.each(function(){
+				sinaWeibo(this,options);
+			});
 		}
 	}
 
 
 	//分享地址
 	var qzone = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}&pics={pic}&summary={content}';
-	var weibo = 'http://service.weibo.com/share/share.php?url={url}&title={title}&pic={pic}&searchPic=false';
+	var sina = 'http://service.weibo.com/share/share.php?url={url}&title={title}&pic={pic}&searchPic=false';
 	var tqq = 'http://share.v.t.qq.com/index.php?c=share&a=index&url={url}&title={title}&appkey=801cf76d3cfc44ada52ec13114e84a96';
 	var douban = 'http://www.douban.com/share/service?href={url}&name={title}&text={content}&image={pic}';
 	var weixin = 'http://qr.liantu.com/api.php?text={url}';
