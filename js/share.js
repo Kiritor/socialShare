@@ -1,8 +1,7 @@
-/**
+/*
  * @Author:L.Tap
  * @Description: 社会化分享
  */
-
 ;
 (function($, window, document, undefined) {
     //插件初始化
