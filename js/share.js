@@ -38,6 +38,10 @@
 		$(document).on("click",".msb_network_button.douban",function(){
 			doubanShare(this,settings);
 		});
+		//添加微信分享事件
+		$(document).on("click",".msb_network_button.weixin",function(){
+			weixinShare(this,settings);
+		});
         $(document).on("click",".msb_main",function(){
 			if ($(this).hasClass("disabled")) return;
             var e = 500;//动画时间
@@ -122,6 +126,10 @@
 		window.open(replaceAPI(douban,$.extend({},$.fn.socialShare.defaults,options)));
 	}
 
+	function weixinShare(target,options){
+		window.open(replaceAPI(weixin,$.extend({},$.fn.socialShare.defaults,options)));
+	}
+
     $.fn.socialShare = function(options, param) {
         if(typeof options == 'string'){
 		    var method = $.fn.socialShare.methods[options];
@@ -167,7 +175,12 @@
 			return jq.each(function(){
 				doubanShare(this,options);
 			});
-		}
+		},
+		weixinShare:function(jq,options){
+		    return jq.each(function(){
+				weixinShare(this,options);
+			});
+	    }
 	}
 
 
