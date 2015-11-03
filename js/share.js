@@ -34,8 +34,12 @@
 		$(document).on("click",".msb_network_button.sina",function(){
 			sinaWeibo(this,settings);
 		});
+		//添加豆瓣分享事件
+		$(document).on("click",".msb_network_button.douban",function(){
+			doubanShare(this,settings);
+		});
         $(document).on("click",".msb_main",function(){
-			 if ($(this).hasClass("disabled")) return;
+			if ($(this).hasClass("disabled")) return;
             var e = 500;//动画时间
             var t = 250;//延迟时间
             var r = $(this).parent().find(".msb_network_button").length;  //分享组件的个数
@@ -114,6 +118,10 @@
 		window.open(replaceAPI(sina,options));
 	}
 
+	function doubanShare(target,options){
+		window.open(replaceAPI(douban,$.extend({},$.fn.socialShare.defaults,options)));
+	}
+
     $.fn.socialShare = function(options, param) {
         if(typeof options == 'string'){
 		    var method = $.fn.socialShare.methods[options];
@@ -153,6 +161,11 @@
 		sinaWeibo:function(jq,options) {
 			return jq.each(function(){
 				sinaWeibo(this,options);
+			});
+		},
+		doubanShare:function(jq,options) {
+			return jq.each(function(){
+				doubanShare(this,options);
 			});
 		}
 	}
