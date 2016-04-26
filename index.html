@@ -6,6 +6,7 @@
     <title>jQuery弹出社交分享按钮</title>
     <link rel="stylesheet" href="css/share.css" type="text/css" />
     <script src="js/jquery1.8.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
     <script src="js/share.js" type="text/javascript"></script>
 
 </head>
@@ -13,22 +14,28 @@
 <body>
     <h1>分享组件</h1>
     <div id="socialShare"></div>
-	<h1>单独使用</h1>
-	<a id="shareQQ">分享到QQ空间</a>
+    <h1>单独使用</h1>
+    <a id="shareQQ">分享到QQ空间</a>
+    <div class="ewmDiv"></div>
     <script>
         $(function() {
 
             $("#socialShare").socialShare({
                 content: '自己动手编写jquery插件',
-				url:'http://kiritor.github.io/2015/09/28/shiro-Authentication/',
-				titile:'自己动手编写jquery插件title'
+                url: 'http://kiritor.github.io/2015/09/28/shiro-Authentication/',
+                titile: '自己动手编写jquery插件title'
             });
 
         });
 
-		$("#shareQQ").on("click",function(){
-			$(this).socialShare("tQQ");
-		})
+        $("#shareQQ").on("click", function() {
+            $(this).socialShare("tQQ");
+        })
+         $('#weixin').qrcode({
+            width: 150,
+            height: 150,
+            text: $(location).attr('href')
+        });
     </script>
 
 </body>
