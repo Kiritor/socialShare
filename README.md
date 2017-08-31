@@ -6,8 +6,7 @@
 不过,这种方式也有一些弊端:**性能问题**和**自定义不方便**,界面,交互的体验不是非常好.笔者在自己的个人博客里面也想实现社会化分享功能,而且一向崇尚简洁,因此就自己实现了这款社会化分享插件.
 ## 特性
 简单,高效,酷炫顺畅的交互体验,目前可以分享的平台有:**腾讯微博**,**新浪微博**,**QQ空间**,**豆瓣**,**微信**,如图所示:
-<center>![sns-share](https://github.com/Kiritor/socialShare/blob/master/snapshot.gif)</center>
-
+![sns-share](https://github.com/Kiritor/socialShare/blob/master/snapshot.gif)
 ## 用法
 此插件是基于jquery的,因此需要先引入jquery文件,之后在引入样式及js文件,支持微信二维码扫描,还需引入
 ```javascript
